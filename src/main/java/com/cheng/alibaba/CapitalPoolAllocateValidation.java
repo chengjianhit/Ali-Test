@@ -3,7 +3,7 @@ package com.cheng.alibaba;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BizValidation {
+public class CapitalPoolAllocateValidation {
 
     public static void main(String[] args) {
         List<AllocationSupplyResult> list = new ArrayList<>();
