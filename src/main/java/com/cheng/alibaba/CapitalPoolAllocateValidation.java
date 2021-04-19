@@ -1,5 +1,7 @@
 package com.cheng.alibaba;
 
+import com.cheng.alibaba.strategy.MinDifferenceStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +22,9 @@ public class CapitalPoolAllocateValidation {
         list.add( new AllocationSupplyResult(10,10));
 
         Allocate allocate = new Allocate();
-        List<AllocationSupplyResult> afterList = allocate.allocate(list, 15);
+        allocate.allocate(list, 15, new MinDifferenceStrategy());
 
-        afterList.stream().forEach(e -> {
+        list.stream().forEach(e -> {
             System.out.println(e.toString());
         });
     }
