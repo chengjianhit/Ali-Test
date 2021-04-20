@@ -15,7 +15,7 @@ public class CapitalPoolFacade {
          list = capitalPoolGenStrategy.capitalPoolGen(poolSize);
     }
 
-    public  void allocateShotfalls(int shotfalls, AllocateStrategy allocateStrategy){
+    public  void allocateShotfalls(int shotfalls, AllocateStrategy allocateStrategy) throws Exception {
         synchronized(this){
             allocateStrategy.capitalAllocate(list, shotfalls);
         }

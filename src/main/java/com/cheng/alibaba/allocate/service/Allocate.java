@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Allocate {
 
-    public void allocate(List<AllocationSupplyResult> list, int target, AllocateStrategy allocateStrategy){
+    public void allocate(List<AllocationSupplyResult> list, int target, AllocateStrategy allocateStrategy) throws Exception {
 
         allocateStrategy.capitalAllocate(list, target);
 

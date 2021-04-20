@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CapitalPoolAllocateValidation {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         List<AllocationSupplyResult> list = new ArrayList<>();
 
         list.add( new AllocationSupplyResult(1,1));
