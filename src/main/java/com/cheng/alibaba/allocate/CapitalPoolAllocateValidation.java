@@ -2,7 +2,7 @@ package com.cheng.alibaba.allocate;
 
 import com.cheng.alibaba.allocate.common.entity.AllocationSupplyResult;
 import com.cheng.alibaba.allocate.facade.CapitalPoolFacade;
-import com.cheng.alibaba.allocate.service.Allocate;
+import com.cheng.alibaba.allocate.service.AllocateCapital;
 import com.cheng.alibaba.allocate.strategy.MinDifferenceStrategy;
 import com.cheng.alibaba.allocate.strategy.RandomCapitalPoolGenStrategy;
 
@@ -25,8 +25,8 @@ public class CapitalPoolAllocateValidation {
         list.add( new AllocationSupplyResult(9,9));
         list.add( new AllocationSupplyResult(10,10));
 
-        Allocate allocate = new Allocate();
-        allocate.allocate(list, 15, new MinDifferenceStrategy());
+        AllocateCapital allocateCapital = new AllocateCapital();
+        allocateCapital.allocate(list, 15, new MinDifferenceStrategy());
 
 
         CapitalPoolFacade capitalPoolFacade = new CapitalPoolFacade();

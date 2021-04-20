@@ -1,9 +1,6 @@
 package com.cheng.alibaba.allocate.common.entity;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AllocationSupplyResult {
 
     //资金池标示
@@ -24,7 +21,37 @@ public class AllocationSupplyResult {
     }
 
 
+    public int getFundPoolId() {
+        return fundPoolId;
+    }
 
+    public void setFundPoolId(int fundPoolId) {
+        this.fundPoolId = fundPoolId;
+    }
+
+    public int getPreAllocationShotfalls() {
+        return preAllocationShotfalls;
+    }
+
+    public void setPreAllocationShotfalls(int preAllocationShotfalls) {
+        this.preAllocationShotfalls = preAllocationShotfalls;
+    }
+
+    public int getAllocationShotfalls() {
+        return allocationShotfalls;
+    }
+
+    public void setAllocationShotfalls(int allocationShotfalls) {
+        this.allocationShotfalls = allocationShotfalls;
+    }
+
+    public int getAfterAllocationShotfalls() {
+        return afterAllocationShotfalls;
+    }
+
+    public void setAfterAllocationShotfalls(int afterAllocationShotfalls) {
+        this.afterAllocationShotfalls = afterAllocationShotfalls;
+    }
 
     @Override
     public String toString() {
