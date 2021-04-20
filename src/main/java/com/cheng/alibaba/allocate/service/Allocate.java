@@ -1,5 +1,6 @@
-package com.cheng.alibaba.allocate;
+package com.cheng.alibaba.allocate.service;
 
+import com.cheng.alibaba.allocate.common.entity.AllocationSupplyResult;
 import com.cheng.alibaba.allocate.strategy.AllocateStrategy;
 
 import java.util.*;

@@ -1,6 +1,8 @@
 package com.cheng.alibaba.allocate;
 
+import com.cheng.alibaba.allocate.common.entity.AllocationSupplyResult;
 import com.cheng.alibaba.allocate.facade.CapitalPoolFacade;
+import com.cheng.alibaba.allocate.service.Allocate;
 import com.cheng.alibaba.allocate.strategy.MinDifferenceStrategy;
 import com.cheng.alibaba.allocate.strategy.RandomCapitalPoolGenStrategy;
 

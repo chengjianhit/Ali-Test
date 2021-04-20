@@ -1,4 +1,4 @@
-package com.cheng.alibaba.allocate;
+package com.cheng.alibaba.allocate.common.entity;
 
 
 import java.util.ArrayList;

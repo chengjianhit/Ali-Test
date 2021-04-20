@@ -1,6 +1,7 @@
 package com.cheng.alibaba.allocate.strategy;
 
-import com.cheng.alibaba.allocate.AllocationSupplyResult;
+import com.cheng.alibaba.allocate.common.entity.AllocationSupplyResult;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Service
 public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyResult> {
 
 
