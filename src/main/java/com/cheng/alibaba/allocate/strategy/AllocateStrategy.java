@@ -1,4 +1,4 @@
-package com.cheng.alibaba.strategy;
+package com.cheng.alibaba.allocate.strategy;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.cheng.alibaba.strategy;
+package com.cheng.alibaba.allocate.strategy;
 
-import com.cheng.alibaba.AllocationSupplyResult;
+import com.cheng.alibaba.allocate.AllocationSupplyResult;
 
 import java.util.ArrayList;
 import java.util.Collections;

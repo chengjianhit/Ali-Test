@@ -1,6 +1,8 @@
-package com.cheng.alibaba;
+package com.cheng.alibaba.allocate;
 
-import com.cheng.alibaba.strategy.MinDifferenceStrategy;
+import com.cheng.alibaba.allocate.facade.CapitalPoolFacade;
+import com.cheng.alibaba.allocate.strategy.MinDifferenceStrategy;
+import com.cheng.alibaba.allocate.strategy.RandomCapitalPoolGenStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,14 @@ public class CapitalPoolAllocateValidation {
         Allocate allocate = new Allocate();
         allocate.allocate(list, 15, new MinDifferenceStrategy());
 
-        list.stream().forEach(e -> {
-            System.out.println(e.toString());
-        });
+
+        CapitalPoolFacade capitalPoolFacade = new CapitalPoolFacade();
+        capitalPoolFacade.init(new RandomCapitalPoolGenStrategy(), 15);
+
+        capitalPoolFacade.allocateShotfalls(10, new MinDifferenceStrategy());
+
+        int totalShotfalls = capitalPoolFacade.getTotalShotfalls();
+
+
     }
 }

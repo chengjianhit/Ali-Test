@@ -1,9 +1,8 @@
-package com.cheng.alibaba;
+package com.cheng.alibaba.allocate;
 
-import com.cheng.alibaba.strategy.AllocateStrategy;
+import com.cheng.alibaba.allocate.strategy.AllocateStrategy;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Allocate {
 
