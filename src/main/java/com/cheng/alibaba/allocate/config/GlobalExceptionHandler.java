@@ -1,6 +1,6 @@
 package com.cheng.alibaba.allocate.config;
 
-import com.cheng.alibaba.allocate.common.CommonResponse;
+import com.cheng.alibaba.allocate.common.entity.CommonResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.FieldError;

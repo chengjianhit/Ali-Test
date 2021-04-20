@@ -18,8 +18,11 @@ public class CapitalPayRequest implements Serializable {
     @ApiModelProperty("要求支出的资金金额")
     private Integer payCount;
 
+    /**
+     * 默认使用 MinDifferenceStrategy
+     */
     @ApiModelProperty("资金支出分配策略")
-    private Integer allocateStrategy;
+    private Integer allocateStrategy=0;
 
     public String getMerchantId() {
         return merchantId;

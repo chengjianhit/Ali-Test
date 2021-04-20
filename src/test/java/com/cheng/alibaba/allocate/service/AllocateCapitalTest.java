@@ -22,7 +22,8 @@ public class AllocateCapitalTest extends AliCapitalApplicationTest{
 
     List<AllocationSupplyResult> list2 = new ArrayList<>();
 
-    List<AllocationSupplyResult> list3 = new ArrayList<>();
+
+
 
 
     @Before
@@ -69,9 +70,21 @@ public class AllocateCapitalTest extends AliCapitalApplicationTest{
 
     @Test
     public void allocate() {
-        minDifferenceStrategy.capitalAllocate(list, 0);
-        minDifferenceStrategy.capitalAllocate(list2,50000);
+        minDifferenceStrategy.capitalAllocate(list, 15);
+        minDifferenceStrategy.capitalAllocate(list2,5000);
         System.out.println(JSON.toJSONString(list2));
         System.out.println(JSON.toJSONString(list));
+    }
+
+
+    @Test
+    public void testList3(){
+        List<AllocationSupplyResult> list3 = new ArrayList<>();
+        list3.add(new AllocationSupplyResult(11,1));
+        list3.add(new AllocationSupplyResult(19,2));
+        list3.add(new AllocationSupplyResult(49,3));
+        minDifferenceStrategy.capitalAllocate(list3,55);
+        System.out.println(JSON.toJSONString(list3));
+
     }
 }

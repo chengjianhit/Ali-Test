@@ -20,7 +20,7 @@ public class CapitalPoolInitRequest implements Serializable {
     private Integer poolSize;
 
     @ApiModelProperty("资金池生成策略")
-    private Integer poolGenStrategy;
+    private Integer poolGenStrategy=1;
 
     public String getMerchantId() {
         return merchantId;

@@ -1,5 +1,6 @@
 package com.cheng.alibaba.allocate.strategy;
 
+import com.cheng.alibaba.allocate.common.annotation.AllocateAnnotation;
 import com.cheng.alibaba.allocate.common.entity.AllocationSupplyResult;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
+@AllocateAnnotation(allocateName = "minDifferenceStrategy", allocateIndex = 1)
 public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyResult> {
 
     /**
@@ -20,8 +22,8 @@ public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyR
      *       ii）将剩下需要扣减的金额均分到所有资金池里，余数可分配给前几个资金池
      *
      * （2）当需要支出的金额不超过资金池总金额时
-     *      首先对资金池里面的资金进行排序，为了使得“资金池之间的差额达到最小”，意味着每个资金池被扣减后，按照剩余的资金大小进行排序时，
-     *      尽量接近，在坐标上来看的话，起伏不要太大、排序后的话，整体值向中间靠拢。
+     *      首先对资金池里面的资金进行排序，为了使得“资金池之间的差额达到最小”，意味着每个资金池被扣减后，
+     *      按照剩余的资金大小进行排序时，尽量接近，在坐标上来看的话，起伏不要太大、排序后的话，整体值向中间靠拢。
      *
      *      i）找到最大值和中间值的差值sub，对最大值扣减sub;
      *     ii）如果中间值和最大值大小一样，则寻找次大值和最大值的差值，进行扣减；
@@ -45,7 +47,11 @@ public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyR
     }
 
 
-
+    /**
+     * （1）当需要支出的金额超过资金池总金额时
+     * @param capticalPool
+     * @param target
+     */
     public void doAllocate1(List<AllocationSupplyResult> capticalPool, int target) {
         LinkedList<AllocationSupplyResult> linkedList = new LinkedList<>();
         linkedList.addAll(new ArrayList<>(capticalPool));
@@ -82,7 +88,11 @@ public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyR
         }
 
 
-
+    /**
+     * （2）当需要支出的金额不超过资金池总金额时
+     * @param capticalPool
+     * @param target
+     */
     public void doAllocate2(List<AllocationSupplyResult> capticalPool, int target){
         LinkedList<AllocationSupplyResult> linkedList = new LinkedList<>();
         linkedList.addAll(new ArrayList<>(capticalPool));
@@ -98,15 +108,23 @@ public class MinDifferenceStrategy implements AllocateStrategy<AllocationSupplyR
             int sub = maxItem.afterAllocationShotfalls - midItem.afterAllocationShotfalls;
 
             if (sub != 0){
-                sum.getAndSet(sum.intValue() - sub);
-                maxItem.afterAllocationShotfalls -=sub;
-                maxItem.allocationShotfalls +=sub;
+                //如果差值大于被扣减数，直接扣减sum，循环结束
+                if (sub > sum.intValue()){
+                    maxItem.afterAllocationShotfalls -=sum.intValue();
+                    maxItem.allocationShotfalls +=sum.intValue();
+                    sum.getAndSet(0);
+                }else{
+                    sum.getAndSet(sum.intValue() - sub);
+                    maxItem.afterAllocationShotfalls -=sub;
+                    maxItem.allocationShotfalls +=sub;
+                }
+
             }else{
                 //判断数组是不是全部相等
                 if(linkedList.get(0).afterAllocationShotfalls == maxItem.afterAllocationShotfalls){
                     //如果全部相等
-                    int perCost = target/linkedList.size();
-                    int plus = target%linkedList.size();
+                    int perCost = sum.intValue()/linkedList.size();
+                    int plus = sum.intValue()%linkedList.size();
                     linkedList.stream().forEach(item ->{
                         item.afterAllocationShotfalls -=perCost;
                         sum.getAndSet(sum.intValue() - perCost);
